@@ -1,9 +1,13 @@
-import React from "react";
+import React, { Key } from "react";
 import { Tabs, Tab, Card, CardBody, Navbar, NavbarBrand } from "@heroui/react";
 import { Hero } from "./components/hero";
 
 export default function App() {
   const [selected, setSelected] = React.useState("schedule");
+
+  const handleSelectionChange = (key: Key) => {
+    setSelected(String(key));
+  };
 
   return (
     <main className="min-h-screen bg-background">
@@ -25,7 +29,7 @@ export default function App() {
             <Tabs 
               aria-label="ASES Summit Information" 
               selectedKey={selected} 
-              onSelectionChange={setSelected}
+              onSelectionChange={handleSelectionChange}
               variant="underlined"
               color="primary"
               className="w-full"
