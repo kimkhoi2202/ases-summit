@@ -38,7 +38,7 @@ export const Hero: React.FC = () => {
             <div className="mt-12 flex justify-center items-center space-x-6">
               <div className="flex items-center">
                 <Icon icon="lucide:calendar" style={{ color: "#6abcff" }} className="text-xl mr-2" />
-                <span className="text-white">April 6-12, 2025</span>
+                <span className="text-white">April 6-13, 2025</span>
               </div>
               <div className="flex items-center">
                 <Icon icon="lucide:map-pin" style={{ color: "#6abcff" }} className="text-xl mr-2" />
@@ -51,3 +51,4 @@ export const Hero: React.FC = () => {
     </div>
   );
 };
+
