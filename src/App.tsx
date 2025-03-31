@@ -35,7 +35,7 @@ export default function App() {
             </Button>
           ) : (
             <Button 
-              className="bg-[#6abcff] text-white hover:bg-[#5aa6e6]"
+              className="bg-[#6abcff] text-black hover:bg-[#5aa6e6]"
               variant="solid" 
               onPress={() => setIsLoginOpen(true)}
             >
