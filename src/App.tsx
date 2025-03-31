@@ -21,7 +21,7 @@ export default function App() {
           <img 
             src="https://images.typeform.com/images/LFhGhnmKWCkr/image/default" 
             alt="ASES Summit Logo" 
-            className="h-20"
+            className="h-12 md:h-16 lg:h-20 w-auto object-contain"
           />
         </NavbarBrand>
         <NavbarContent justify="end">
