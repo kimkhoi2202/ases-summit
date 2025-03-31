@@ -3,15 +3,17 @@ import { Icon } from "@iconify/react";
 
 export const Hero: React.FC = () => {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden min-h-[400px]">
       {/* Background image with parallax effect */}
       <div 
-        className="absolute inset-0 bg-fixed" 
+        className="absolute inset-0 bg-fixed bg-[#8d3835]" 
         style={{
           backgroundImage: "url('https://ases.stanford.edu/summit_bg.png')",
-          backgroundPosition: "top -70%", // ADJUST THIS VALUE to move image up/down
+          backgroundPosition: "center", // Changed to center for better responsiveness
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
+          minHeight: "100%",
+          width: "100%",
         }}
       >
         {/* Optional dark overlay for better text readability */}
@@ -35,7 +37,7 @@ export const Hero: React.FC = () => {
               <span className="block mt-2" style={{ color: "#6abcff" }}>The Next Big Thing</span>
             </h1>
             
-            <div className="mt-12 flex justify-center items-center space-x-6">
+            <div className="mt-12 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
               <div className="flex items-center">
                 <Icon icon="lucide:calendar" style={{ color: "#6abcff" }} className="text-xl mr-2" />
                 <span className="text-white">April 6-12, 2025</span>
