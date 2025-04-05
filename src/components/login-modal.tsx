@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Input } from "@heroui/react";
 import { useAuth } from "../context/auth-context";
+import { useNavigate } from "react-router-dom";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -12,6 +13,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   // Reset form when modal closes
   React.useEffect(() => {
@@ -27,6 +29,8 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     if (username === import.meta.env.VITE_AUTH_USERNAME && password === import.meta.env.VITE_AUTH_PASSWORD) {
       login();
       onClose();
+      // Redirect to organizer page after successful login
+      navigate("/organizer");
     } else {
       setError("Invalid username or password");
     }

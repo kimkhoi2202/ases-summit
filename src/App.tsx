@@ -96,6 +96,7 @@ function AppContent() {
   const [isLoginOpen, setIsLoginOpen] = React.useState(false);
   const { isAuthenticated } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Check if we're on the organizer page and not authenticated
   useEffect(() => {
@@ -103,6 +104,14 @@ function AppContent() {
       setIsLoginOpen(true);
     }
   }, [location.pathname, isAuthenticated]);
+
+  // Redirect to organizer page if user is already authenticated
+  useEffect(() => {
+    // Only redirect if they're not already on the organizer page
+    if (isAuthenticated && location.pathname !== '/organizer') {
+      navigate('/organizer');
+    }
+  }, [isAuthenticated, location.pathname, navigate]);
 
   return (
     <main className="min-h-screen bg-background">
