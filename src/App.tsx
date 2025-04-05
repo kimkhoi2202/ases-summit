@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Link } from "@heroui/react";
 import { BrowserRouter as Router, Routes, Route, Link as RouterLink, useLocation } from "react-router-dom";
 import { LoginModal } from "./components/login-modal";
@@ -6,14 +6,30 @@ import { useAuth } from "./context/auth-context";
 import { OrganizerView } from "./components/organizer-view";
 import { Home } from "./pages/Home";
 import { Stanford } from "./pages/Stanford";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+
+// Create a context for the login modal
+interface LoginModalContextType {
+  openLoginModal: () => void;
+}
+
+const LoginModalContext = createContext<LoginModalContextType>({
+  openLoginModal: () => {}
+});
+
+export const useLoginModal = () => useContext(LoginModalContext);
 
 const NavbarComponent = () => {
   const [isLoginOpen, setIsLoginOpen] = React.useState(false);
   const { isAuthenticated, logout } = useAuth();
   const location = useLocation();
 
+  const openLoginModal = () => {
+    setIsLoginOpen(true);
+  };
+
   return (
-    <>
+    <LoginModalContext.Provider value={{ openLoginModal }}>
       <Navbar className="bg-white border-b border-divider">
         <NavbarBrand>
           <RouterLink to="/">
@@ -56,7 +72,7 @@ const NavbarComponent = () => {
             <Button
               className="bg-[#6abcff] text-black hover:bg-[#5aa6e6]"
               variant="solid"
-              onPress={() => setIsLoginOpen(true)}
+              onPress={openLoginModal}
             >
               Organizers Log In
             </Button>
@@ -65,7 +81,7 @@ const NavbarComponent = () => {
       </Navbar>
 
       <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
-    </>
+    </LoginModalContext.Provider>
   );
 };
 
@@ -78,7 +94,14 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/stanford" element={<Stanford />} />
-          <Route path="/organizer" element={<OrganizerView />} />
+          <Route
+            path="/organizer"
+            element={
+              <ProtectedRoute>
+                <OrganizerView />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </main>
     </Router>
