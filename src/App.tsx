@@ -35,6 +35,13 @@ const NavbarComponent = () => {
               Stanford
             </Link>
           </NavbarItem>
+          {isAuthenticated && (
+            <NavbarItem isActive={location.pathname === "/organizer"}>
+              <Link as={RouterLink} to="/organizer" color={location.pathname === "/organizer" ? "primary" : "foreground"}>
+                Organizer Tools
+              </Link>
+            </NavbarItem>
+          )}
         </NavbarContent>
         <NavbarContent justify="end">
           {isAuthenticated ? (
@@ -63,21 +70,16 @@ const NavbarComponent = () => {
 };
 
 export default function App() {
-  const { isAuthenticated } = useAuth();
-
   return (
     <Router>
       <main className="min-h-screen bg-background">
         <NavbarComponent />
 
-        {isAuthenticated ? (
-          <OrganizerView />
-        ) : (
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/stanford" element={<Stanford />} />
-          </Routes>
-        )}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/stanford" element={<Stanford />} />
+          <Route path="/organizer" element={<OrganizerView />} />
+        </Routes>
       </main>
     </Router>
   );
