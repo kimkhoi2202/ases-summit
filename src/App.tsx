@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Link } from "@heroui/react";
-import { BrowserRouter as Router, Routes, Route, Link as RouterLink, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import { LoginModal } from "./components/login-modal";
 import { useAuth } from "./context/auth-context";
 import { OrganizerView } from "./components/organizer-view";
