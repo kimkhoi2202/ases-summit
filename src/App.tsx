@@ -105,13 +105,8 @@ function AppContent() {
     }
   }, [location.pathname, isAuthenticated]);
 
-  // Redirect to organizer page if user is already authenticated
-  useEffect(() => {
-    // Only redirect if they're not already on the organizer page
-    if (isAuthenticated && location.pathname !== '/organizer') {
-      navigate('/organizer');
-    }
-  }, [isAuthenticated, location.pathname, navigate]);
+  // We're removing the automatic redirection for authenticated users
+  // This allows them to freely navigate between pages after login
 
   return (
     <main className="min-h-screen bg-background">
