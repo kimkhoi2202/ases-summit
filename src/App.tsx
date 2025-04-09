@@ -6,6 +6,7 @@ import { useAuth } from "./context/auth-context";
 import { OrganizerView } from "./components/organizer-view";
 import { Home } from "./pages/Home";
 import { Stanford } from "./pages/Stanford";
+import { Workshop2 } from "./pages/Workshop2";
 
 interface NavbarComponentProps {
   setLoginOpen: (isOpen: boolean) => void;
@@ -35,6 +36,11 @@ const NavbarComponent: React.FC<NavbarComponentProps> = ({ setLoginOpen }) => {
         <NavbarItem isActive={location.pathname === "/stanford"}>
           <Link as={RouterLink} to="/stanford" color={location.pathname === "/stanford" ? "primary" : "foreground"}>
             Stanford
+          </Link>
+        </NavbarItem>
+        <NavbarItem isActive={location.pathname === "/workshop-2"}>
+          <Link as={RouterLink} to="/workshop-2" color={location.pathname === "/workshop-2" ? "primary" : "foreground"}>
+            Workshop 2
           </Link>
         </NavbarItem>
         {isAuthenticated && (
@@ -115,6 +121,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/stanford" element={<Stanford />} />
+        <Route path="/workshop-2" element={<Workshop2 />} />
         <Route
           path="/organizer"
           element={
