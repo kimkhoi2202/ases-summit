@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Link } from "@heroui/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Link, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/react";
 import { BrowserRouter as Router, Routes, Route, Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import { LoginModal } from "./components/login-modal";
 import { useAuth } from "./context/auth-context";
@@ -7,6 +7,8 @@ import { OrganizerView } from "./components/organizer-view";
 import { Home } from "./pages/Home";
 import { Stanford } from "./pages/Stanford";
 import { Workshop2 } from "./pages/Workshop2";
+import { SamAhmed } from "./pages/SamAhmed";
+import { RyanChiang } from "./pages/RyanChiang";
 
 interface NavbarComponentProps {
   setLoginOpen: (isOpen: boolean) => void;
@@ -43,6 +45,30 @@ const NavbarComponent: React.FC<NavbarComponentProps> = ({ setLoginOpen }) => {
             Workshop 2
           </Link>
         </NavbarItem>
+        <Dropdown>
+          <NavbarItem>
+            <DropdownTrigger>
+              <Button
+                disableRipple
+                className="p-0 bg-transparent data-[hover=true]:bg-transparent"
+                endContent={<span className="text-small">▼</span>}
+                radius="sm"
+                variant="light"
+                color={location.pathname.includes("/speaker") ? "primary" : "foreground"}
+              >
+                Speaker
+              </Button>
+            </DropdownTrigger>
+          </NavbarItem>
+          <DropdownMenu aria-label="Speaker options">
+            <DropdownItem key="sam-ahmed" as={RouterLink} to="/speaker/sam-ahmed">
+              Sam Ahmed (thestoicteacher)
+            </DropdownItem>
+            <DropdownItem key="ryan-chiang" as={RouterLink} to="/speaker/ryan-chiang">
+              Ryan Chiang (EssaysThatWorked)
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
         {isAuthenticated && (
           <NavbarItem isActive={location.pathname === "/organizer"}>
             <Link as={RouterLink} to="/organizer" color={location.pathname === "/organizer" ? "primary" : "foreground"}>
@@ -122,6 +148,8 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/stanford" element={<Stanford />} />
         <Route path="/workshop-2" element={<Workshop2 />} />
+        <Route path="/speaker/sam-ahmed" element={<SamAhmed />} />
+        <Route path="/speaker/ryan-chiang" element={<RyanChiang />} />
         <Route
           path="/organizer"
           element={
