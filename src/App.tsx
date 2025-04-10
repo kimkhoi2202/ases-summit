@@ -46,18 +46,15 @@ const NavbarComponent: React.FC<NavbarComponentProps> = ({ setLoginOpen }) => {
           </Link>
         </NavbarItem>
         <Dropdown>
-          <NavbarItem>
+          <NavbarItem isActive={location.pathname.includes("/speaker")}>
             <DropdownTrigger>
-              <Button
-                disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                endContent={<span className="text-small">▼</span>}
-                radius="sm"
-                variant="light"
+              <Link
+                className="flex items-center gap-1 cursor-pointer"
                 color={location.pathname.includes("/speaker") ? "primary" : "foreground"}
               >
                 Speaker
-              </Button>
+                <span className="text-xs">▼</span>
+              </Link>
             </DropdownTrigger>
           </NavbarItem>
           <DropdownMenu aria-label="Speaker options">
