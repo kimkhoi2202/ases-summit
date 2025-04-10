@@ -58,11 +58,15 @@ const NavbarComponent: React.FC<NavbarComponentProps> = ({ setLoginOpen }) => {
             </DropdownTrigger>
           </NavbarItem>
           <DropdownMenu aria-label="Speaker options">
-            <DropdownItem key="sam-ahmed" as={RouterLink} to="/speaker/sam-ahmed">
-              Sam Ahmed (thestoicteacher)
+            <DropdownItem key="sam-ahmed">
+              <Link as={RouterLink} to="/speaker/sam-ahmed" className="w-full">
+                Sam Ahmed (thestoicteacher)
+              </Link>
             </DropdownItem>
-            <DropdownItem key="ryan-chiang" as={RouterLink} to="/speaker/ryan-chiang">
-              Ryan Chiang (EssaysThatWorked)
+            <DropdownItem key="ryan-chiang">
+              <Link as={RouterLink} to="/speaker/ryan-chiang" className="w-full">
+                Ryan Chiang (EssaysThatWorked)
+              </Link>
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
