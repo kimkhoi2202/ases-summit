@@ -25,7 +25,8 @@ export const Workshop2: React.FC = () => {
             src="https://www.canva.com/design/DAGkHmyjKB4/M8qGQuKseRdENxqInz9fgA/view?embed"
             allowFullScreen
             title="Workshop 2 Canva Presentation"
-            className="w-full h-[500px] border-0"
+            className="w-full h-[500px] border-0 rounded-lg"
+            style={{ borderRadius: '0.5rem' }}
           ></iframe>
         </div>
 
@@ -35,7 +36,8 @@ export const Workshop2: React.FC = () => {
             src="https://docs.google.com/presentation/d/14a9ebiuZIrMQehBTN25GOSweDGrg1jnumU-Frui8OtM/embed?start=false&loop=false&delayms=3000"
             allowFullScreen
             title="Workshop 2 Google Slides Presentation"
-            className="w-full h-[500px] border-0"
+            className="w-full h-[500px] border-0 rounded-lg"
+            style={{ borderRadius: '0.5rem' }}
           ></iframe>
         </div>
       </div>

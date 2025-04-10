@@ -52,7 +52,7 @@ const NavbarComponent: React.FC<NavbarComponentProps> = ({ setLoginOpen }) => {
                 className="flex items-center gap-1 cursor-pointer"
                 color={location.pathname.includes("/speaker") ? "primary" : "foreground"}
               >
-                Speaker
+                Speaker Keynotes
                 <span className="text-xs">▼</span>
               </Link>
             </DropdownTrigger>
