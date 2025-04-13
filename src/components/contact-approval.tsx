@@ -14,8 +14,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  ModalFooter,
-  Divider
+  ModalFooter
 } from "@heroui/react";
 import { supabase, Contact } from "../lib/supabase";
 import { Icon } from "@iconify/react";
@@ -194,19 +193,7 @@ export const ContactApproval: React.FC = () => {
     setSelectedContact(null);
   };
 
-  const renderSocialLinks = (contact: Contact) => {
-    const links = [];
-
-    if (contact.instagram) links.push('Instagram');
-    if (contact.facebook) links.push('Facebook');
-    if (contact.linkedin) links.push('LinkedIn');
-    if (contact.youtube) links.push('YouTube');
-    if (contact.twitter) links.push('Twitter');
-    if (contact.email) links.push('Email');
-    if (contact.website) links.push('Website');
-
-    return links.length > 0 ? links.join(', ') : 'None';
-  };
+  // Removed unused function
 
   if (loading) {
     return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Image as HeroImage, Spinner } from '@heroui/react';
+import { Button } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import { supabase } from '../lib/supabase';
 
@@ -9,7 +9,7 @@ interface PhotoUploadProps {
 }
 
 export const PhotoUpload: React.FC<PhotoUploadProps> = ({ onPhotoChange, initialPhotoUrl }) => {
-  const [file, setFile] = useState<File | null>(null);
+  const [_, setFile] = useState<File | null>(null);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(initialPhotoUrl || null);
   const [dragActive, setDragActive] = useState<boolean>(false);
@@ -154,10 +154,7 @@ export const PhotoUpload: React.FC<PhotoUploadProps> = ({ onPhotoChange, initial
       if (error) {
         console.error('Supabase storage upload error:', {
           message: error.message,
-          name: error.name,
-          statusCode: error.statusCode,
-          details: error.details,
-          code: error.code
+          name: error.name
         });
 
         // Show more specific error messages based on the error
@@ -186,7 +183,7 @@ export const PhotoUpload: React.FC<PhotoUploadProps> = ({ onPhotoChange, initial
 
           reader.readAsDataURL(file);
           return null;
-        } else if (error.statusCode === 413) {
+        } else if (error.message.includes('413') || error.message.includes('too large')) {
           setUploadError('File too large. Please use a smaller image.');
         } else {
           setUploadError(`Upload error: ${error.message}`);

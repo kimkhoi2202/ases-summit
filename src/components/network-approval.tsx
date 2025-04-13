@@ -40,7 +40,6 @@ export const NetworkApproval: React.FC = () => {
       console.log('Fetching contacts with filter state:', filterState);
 
       // We know the is_rejected column exists now, so we don't need to check
-      const hasRejectedColumn = true;
       console.log('Using is_rejected column for filtering');
 
       // Fetch from Supabase based on the filter
@@ -271,7 +270,7 @@ export const NetworkApproval: React.FC = () => {
                         <Icon icon="mdi:eye" className="text-lg" />
                       </Button>
                     </Tooltip>
-                    
+
                     {!contact.is_approved && contact.is_rejected !== true && (
                       <>
                         <Tooltip content="Approve">

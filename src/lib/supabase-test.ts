@@ -8,7 +8,7 @@ export const testSupabaseConnection = async (): Promise<{
 }> => {
   try {
     // Test 1: Simple ping to check if we can connect to the database
-    const { data, error } = await supabase.from('contacts').select('count').limit(1);
+    const { error } = await supabase.from('contacts').select('count').limit(1);
 
     if (error) {
       return {
@@ -146,7 +146,6 @@ export const testImageUpload = async (imageFile: File): Promise<{
           message: 'Permission denied when uploading to contact-photos bucket',
           details: {
             error: uploadError.message,
-            code: uploadError.code,
             hint: 'You need to add an INSERT policy for the contact-photos bucket in Supabase dashboard'
           }
         };
@@ -157,8 +156,6 @@ export const testImageUpload = async (imageFile: File): Promise<{
         message: 'Error uploading to contact-photos bucket',
         details: {
           error: uploadError.message,
-          code: uploadError.code,
-          statusCode: uploadError.statusCode,
           hint: 'Check bucket configuration in Supabase dashboard'
         }
       };
@@ -190,10 +187,7 @@ export const testImageUpload = async (imageFile: File): Promise<{
     if (error) {
       console.error('Upload error details:', {
         message: error.message,
-        name: error.name,
-        code: error.code,
-        statusCode: error.statusCode,
-        details: error.details
+        name: error.name
       });
 
       return {
@@ -201,8 +195,6 @@ export const testImageUpload = async (imageFile: File): Promise<{
         message: 'Upload failed',
         details: {
           error: error.message,
-          code: error.code,
-          statusCode: error.statusCode,
           hint: 'Check bucket policies in Supabase dashboard'
         }
       };

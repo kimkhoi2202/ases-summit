@@ -266,9 +266,9 @@ export const ContactForm: React.FC = () => {
               onChange={(e) => handleInputChange('category', e.target.value as 'organizer' | 'speaker' | 'delegate')}
               isRequired
             >
-              <SelectItem key="delegate" value="delegate">Delegate</SelectItem>
-              <SelectItem key="speaker" value="speaker">Speaker</SelectItem>
-              <SelectItem key="organizer" value="organizer">Organizer</SelectItem>
+              <SelectItem key="delegate">Delegate</SelectItem>
+              <SelectItem key="speaker">Speaker</SelectItem>
+              <SelectItem key="organizer">Organizer</SelectItem>
             </Select>
 
             <Input
