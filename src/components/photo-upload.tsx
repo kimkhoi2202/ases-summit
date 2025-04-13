@@ -14,11 +14,11 @@ export const PhotoUpload: React.FC<PhotoUploadProps> = ({ onPhotoChange, initial
   const [previewUrl, setPreviewUrl] = useState<string | null>(initialPhotoUrl || null);
   const [dragActive, setDragActive] = useState<boolean>(false);
 
-  // Set initial preview if provided
+  // Update preview when initialPhotoUrl changes
   useEffect(() => {
-    if (initialPhotoUrl) {
-      setPreviewUrl(initialPhotoUrl);
-    }
+    // If initialPhotoUrl is empty or null, clear the preview
+    // Otherwise, set the preview to the initialPhotoUrl
+    setPreviewUrl(initialPhotoUrl || null);
   }, [initialPhotoUrl]);
 
   // Handle file selection
@@ -28,6 +28,11 @@ export const PhotoUpload: React.FC<PhotoUploadProps> = ({ onPhotoChange, initial
 
     if (selectedFile) {
       validateAndSetFile(selectedFile);
+    } else {
+      // If no file is selected (e.g., after clearing), reset the state
+      setFile(null);
+      setPreviewUrl(null);
+      onPhotoChange(null);
     }
   };
 
@@ -296,6 +301,12 @@ export const PhotoUpload: React.FC<PhotoUploadProps> = ({ onPhotoChange, initial
     setFile(null);
     setPreviewUrl(null);
     onPhotoChange(null);
+
+    // Reset the file input if it exists
+    const fileInput = document.getElementById('file-upload') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = '';
+    }
   };
 
   return (
