@@ -10,7 +10,8 @@ import { Network } from "./pages/Network";
 import { SubmitNetwork } from "./pages/SubmitNetwork";
 import { ContactsRedirect } from "./pages/ContactsRedirect";
 import { SubmitContactRedirect } from "./pages/SubmitContactRedirect";
-import { Footage } from "./pages/Footage";
+// import { Footage } from "./pages/Footage"; // Commented out as we're using FootageRedirect instead
+import { FootageRedirect } from "./pages/FootageRedirect";
 import { Workshop2 } from "./pages/Workshop2";
 import { SamAhmed } from "./pages/SamAhmed";
 import { RyanChiang } from "./pages/RyanChiang";
@@ -168,7 +169,7 @@ function AppContent() {
         <Route path="/submit-network" element={<SubmitNetwork />} />
         <Route path="/contacts" element={<ContactsRedirect />} />
         <Route path="/submit-contact" element={<SubmitContactRedirect />} />
-        <Route path="/footage" element={<Footage />} />
+        <Route path="/footage" element={<FootageRedirect />} />
         <Route path="/workshop-2" element={<Workshop2 />} />
         <Route path="/speaker/sam-ahmed" element={<SamAhmed />} />
         <Route path="/speaker/ryan-chiang" element={<RyanChiang />} />

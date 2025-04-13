@@ -2,6 +2,8 @@ import React from "react";
 import { Button } from "@heroui/react";
 import { Hero } from "../components/hero";
 
+// Commented out and replaced with a redirect to Google Drive directly
+// To re-enable, uncomment this component and update the route in App.tsx
 export const Footage: React.FC = () => {
   const driveUrl = "https://drive.google.com/drive/folders/1PluDG_TcnvSxsJtdBJauCgU2jqcrUccg?usp=sharing";
 
