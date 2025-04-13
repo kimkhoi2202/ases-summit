@@ -11,6 +11,7 @@ export interface ContactFormData {
   title: string;
   bio: string;
   location: string;
+  notes?: string;
   photo_url?: string;
   instagram?: string;
   facebook?: string;

@@ -89,7 +89,7 @@ const ContactCard: React.FC<ContactCardProps> = (props) => {
 
           {linkedin && (
             <a
-              href={linkedin}
+              href={linkedin.startsWith('http') ? linkedin : `https://${linkedin}`}
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 bg-blue-700 text-white rounded-full hover:opacity-90 transition-opacity"
@@ -379,6 +379,12 @@ export const Network: React.FC = () => {
                           <p className="text-gray-700">{selectedContact.bio}</p>
                         </div>
                       )}
+                      {selectedContact.notes && (
+                        <div className="mb-4">
+                          <h3 className="text-md font-semibold mb-1">Notes</h3>
+                          <p className="text-gray-700">{selectedContact.notes}</p>
+                        </div>
+                      )}
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold mb-3">Contact Information</h3>
@@ -429,8 +435,10 @@ export const Network: React.FC = () => {
                                 <Icon icon="mdi:instagram" className="text-xl text-gray-600" />
                                 <div>
                                   <p className="text-sm text-gray-500">Instagram</p>
-                                  <a href={selectedContact.instagram} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                                    {selectedContact.instagram.replace(/https?:\/\/(www\.)?instagram\.com\//i, '@')}
+                                  <a href={selectedContact.instagram.startsWith('http') ? selectedContact.instagram : `https://${selectedContact.instagram}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                    {selectedContact.instagram.includes('instagram.com/') ?
+                                      '@' + selectedContact.instagram.split('instagram.com/')[1].replace(/\/$/, '') :
+                                      selectedContact.instagram}
                                   </a>
                                 </div>
                               </div>
@@ -440,8 +448,10 @@ export const Network: React.FC = () => {
                                 <Icon icon="mdi:facebook" className="text-xl text-gray-600" />
                                 <div>
                                   <p className="text-sm text-gray-500">Facebook</p>
-                                  <a href={selectedContact.facebook} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                                    {selectedContact.facebook.replace(/https?:\/\/(www\.)?facebook\.com\//i, '')}
+                                  <a href={selectedContact.facebook.startsWith('http') ? selectedContact.facebook : `https://${selectedContact.facebook}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                    {selectedContact.facebook.includes('facebook.com/') ?
+                                      selectedContact.facebook.split('facebook.com/')[1].replace(/\/$/, '') :
+                                      selectedContact.facebook}
                                   </a>
                                 </div>
                               </div>
@@ -451,8 +461,10 @@ export const Network: React.FC = () => {
                                 <Icon icon="mdi:linkedin" className="text-xl text-gray-600" />
                                 <div>
                                   <p className="text-sm text-gray-500">LinkedIn</p>
-                                  <a href={selectedContact.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                                    {selectedContact.linkedin.replace(/https?:\/\/(www\.)?linkedin\.com\/in\//i, '')}
+                                  <a href={selectedContact.linkedin.startsWith('http') ? selectedContact.linkedin : `https://${selectedContact.linkedin}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                    {selectedContact.linkedin.includes('linkedin.com/in/') ?
+                                      selectedContact.linkedin.split('linkedin.com/in/')[1].replace(/\/$/, '') :
+                                      selectedContact.linkedin}
                                   </a>
                                 </div>
                               </div>
@@ -462,8 +474,14 @@ export const Network: React.FC = () => {
                                 <Icon icon="mdi:youtube" className="text-xl text-gray-600" />
                                 <div>
                                   <p className="text-sm text-gray-500">YouTube</p>
-                                  <a href={selectedContact.youtube} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                                    {selectedContact.youtube.replace(/https?:\/\/(www\.)?youtube\.com\/(channel|user)\/|https?:\/\/(www\.)?youtube\.com\/@/i, '@')}
+                                  <a href={selectedContact.youtube.startsWith('http') ? selectedContact.youtube : `https://${selectedContact.youtube}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                    {selectedContact.youtube.includes('youtube.com/@') ?
+                                      selectedContact.youtube.split('youtube.com/@')[1].replace(/\/$/, '') :
+                                      selectedContact.youtube.includes('youtube.com/channel/') ?
+                                        '@' + selectedContact.youtube.split('youtube.com/channel/')[1].replace(/\/$/, '') :
+                                        selectedContact.youtube.includes('youtube.com/user/') ?
+                                          '@' + selectedContact.youtube.split('youtube.com/user/')[1].replace(/\/$/, '') :
+                                          selectedContact.youtube}
                                   </a>
                                 </div>
                               </div>
@@ -473,8 +491,10 @@ export const Network: React.FC = () => {
                                 <Icon icon="mdi:twitter" className="text-xl text-gray-600" />
                                 <div>
                                   <p className="text-sm text-gray-500">Twitter</p>
-                                  <a href={selectedContact.twitter} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                                    {selectedContact.twitter.replace(/https?:\/\/(www\.)?twitter\.com\//i, '@')}
+                                  <a href={selectedContact.twitter.startsWith('http') ? selectedContact.twitter : `https://${selectedContact.twitter}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                    {selectedContact.twitter.includes('twitter.com/') ?
+                                      '@' + selectedContact.twitter.split('twitter.com/')[1].replace(/\/$/, '') :
+                                      selectedContact.twitter}
                                   </a>
                                 </div>
                               </div>

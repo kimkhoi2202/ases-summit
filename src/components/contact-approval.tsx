@@ -455,8 +455,10 @@ export const ContactApproval: React.FC = () => {
                           {selectedContact.instagram && (
                             <div className="flex items-center gap-2">
                               <Icon icon="mdi:instagram" className="text-gray-400" />
-                              <a href={selectedContact.instagram} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                                {selectedContact.instagram}
+                              <a href={selectedContact.instagram.startsWith('http') ? selectedContact.instagram : `https://${selectedContact.instagram}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                {selectedContact.instagram.includes('instagram.com/') ?
+                                  '@' + selectedContact.instagram.split('instagram.com/')[1].replace(/\/$/, '') :
+                                  selectedContact.instagram}
                               </a>
                             </div>
                           )}
@@ -464,8 +466,10 @@ export const ContactApproval: React.FC = () => {
                           {selectedContact.facebook && (
                             <div className="flex items-center gap-2">
                               <Icon icon="mdi:facebook" className="text-gray-400" />
-                              <a href={selectedContact.facebook} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                                {selectedContact.facebook}
+                              <a href={selectedContact.facebook.startsWith('http') ? selectedContact.facebook : `https://${selectedContact.facebook}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                {selectedContact.facebook.includes('facebook.com/') ?
+                                  selectedContact.facebook.split('facebook.com/')[1].replace(/\/$/, '') :
+                                  selectedContact.facebook}
                               </a>
                             </div>
                           )}
@@ -473,8 +477,10 @@ export const ContactApproval: React.FC = () => {
                           {selectedContact.linkedin && (
                             <div className="flex items-center gap-2">
                               <Icon icon="mdi:linkedin" className="text-gray-400" />
-                              <a href={selectedContact.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                                {selectedContact.linkedin}
+                              <a href={selectedContact.linkedin.startsWith('http') ? selectedContact.linkedin : `https://${selectedContact.linkedin}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                {selectedContact.linkedin.includes('linkedin.com/in/') ?
+                                  selectedContact.linkedin.split('linkedin.com/in/')[1].replace(/\/$/, '') :
+                                  selectedContact.linkedin}
                               </a>
                             </div>
                           )}
@@ -482,8 +488,14 @@ export const ContactApproval: React.FC = () => {
                           {selectedContact.youtube && (
                             <div className="flex items-center gap-2">
                               <Icon icon="mdi:youtube" className="text-gray-400" />
-                              <a href={selectedContact.youtube} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                                {selectedContact.youtube}
+                              <a href={selectedContact.youtube.startsWith('http') ? selectedContact.youtube : `https://${selectedContact.youtube}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                {selectedContact.youtube.includes('youtube.com/@') ?
+                                  selectedContact.youtube.split('youtube.com/@')[1].replace(/\/$/, '') :
+                                  selectedContact.youtube.includes('youtube.com/channel/') ?
+                                    '@' + selectedContact.youtube.split('youtube.com/channel/')[1].replace(/\/$/, '') :
+                                    selectedContact.youtube.includes('youtube.com/user/') ?
+                                      '@' + selectedContact.youtube.split('youtube.com/user/')[1].replace(/\/$/, '') :
+                                      selectedContact.youtube}
                               </a>
                             </div>
                           )}
@@ -491,8 +503,10 @@ export const ContactApproval: React.FC = () => {
                           {selectedContact.twitter && (
                             <div className="flex items-center gap-2">
                               <Icon icon="mdi:twitter" className="text-gray-400" />
-                              <a href={selectedContact.twitter} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                                {selectedContact.twitter}
+                              <a href={selectedContact.twitter.startsWith('http') ? selectedContact.twitter : `https://${selectedContact.twitter}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                {selectedContact.twitter.includes('twitter.com/') ?
+                                  '@' + selectedContact.twitter.split('twitter.com/')[1].replace(/\/$/, '') :
+                                  selectedContact.twitter}
                               </a>
                             </div>
                           )}
@@ -500,7 +514,7 @@ export const ContactApproval: React.FC = () => {
                           {selectedContact.website && (
                             <div className="flex items-center gap-2">
                               <Icon icon="mdi:web" className="text-gray-400" />
-                              <a href={selectedContact.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                              <a href={selectedContact.website.startsWith('http') ? selectedContact.website : `https://${selectedContact.website}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                                 {selectedContact.website}
                               </a>
                             </div>

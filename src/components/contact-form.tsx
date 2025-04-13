@@ -24,6 +24,7 @@ export const ContactForm: React.FC = () => {
     title: '',
     bio: '',
     location: '',
+    notes: '',
     photo_url: '',
     instagram: '',
     facebook: '',
@@ -127,6 +128,9 @@ export const ContactForm: React.FC = () => {
       // Bio is required in the database schema, so always include it
       dataToSubmit.bio = formData.bio || '';
 
+      // Add notes if it has a value
+      if (formData.notes) dataToSubmit.notes = formData.notes;
+
       // Only add other optional fields if they have values
       if (formData.location) dataToSubmit.location = formData.location;
       if (formData.photo_url) dataToSubmit.photo_url = formData.photo_url;
@@ -189,6 +193,7 @@ export const ContactForm: React.FC = () => {
         title: '',
         bio: '',
         location: '',
+        notes: '',
         photo_url: '',
         instagram: '',
         facebook: '',
@@ -294,6 +299,15 @@ export const ContactForm: React.FC = () => {
               onValueChange={(value) => handleInputChange('bio', value)}
               minRows={3}
               maxRows={5}
+            />
+
+            <Textarea
+              label="Notes (Optional)"
+              placeholder="Add any additional notes or information"
+              value={formData.notes || ''}
+              onValueChange={(value) => handleInputChange('notes', value)}
+              minRows={2}
+              maxRows={4}
             />
 
             <Input
