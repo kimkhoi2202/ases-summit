@@ -24,15 +24,17 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     }
   }, [isOpen]);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     setError("");
-    if (username === import.meta.env.VITE_AUTH_USERNAME && password === import.meta.env.VITE_AUTH_PASSWORD) {
-      login();
+
+    const { success, error } = await login(username, password);
+
+    if (success) {
       onClose();
       // Redirect to organizer page after successful login
       navigate("/organizer");
     } else {
-      setError("Invalid username or password");
+      setError(error || "Invalid username or password");
     }
   };
 

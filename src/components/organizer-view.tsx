@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, CardBody, Tabs, Tab } from "@heroui/react";
+import { NetworkApproval } from "./network-approval";
 
 export const OrganizerView: React.FC = () => {
-  const [selected, setSelected] = React.useState("stanford-students");
+  const [selected, setSelected] = React.useState("network-approval");
 
   const handleTabChange = (key: string | number) => {
     setSelected(key.toString());
@@ -20,6 +21,11 @@ export const OrganizerView: React.FC = () => {
             color="primary"
             className="w-full"
           >
+            <Tab key="network-approval" title="Network Approval">
+              <div className="p-4">
+                <NetworkApproval />
+              </div>
+            </Tab>
             <Tab key="stanford-students" title="Stanford Students">
               <div className="p-4">
                 <iframe

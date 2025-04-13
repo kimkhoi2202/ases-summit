@@ -6,9 +6,15 @@ import { useAuth } from "./context/auth-context";
 import { OrganizerView } from "./components/organizer-view";
 import { Home } from "./pages/Home";
 import { Stanford } from "./pages/Stanford";
+import { Network } from "./pages/Network";
+import { SubmitNetwork } from "./pages/SubmitNetwork";
+import { ContactsRedirect } from "./pages/ContactsRedirect";
+import { SubmitContactRedirect } from "./pages/SubmitContactRedirect";
+import { Footage } from "./pages/Footage";
 import { Workshop2 } from "./pages/Workshop2";
 import { SamAhmed } from "./pages/SamAhmed";
 import { RyanChiang } from "./pages/RyanChiang";
+import { SupabaseTestPage } from "./pages/SupabaseTest";
 
 interface NavbarComponentProps {
   setLoginOpen: (isOpen: boolean) => void;
@@ -38,6 +44,16 @@ const NavbarComponent: React.FC<NavbarComponentProps> = ({ setLoginOpen }) => {
         <NavbarItem isActive={location.pathname === "/stanford"}>
           <Link as={RouterLink} to="/stanford" color={location.pathname === "/stanford" ? "primary" : "foreground"}>
             Stanford
+          </Link>
+        </NavbarItem>
+        <NavbarItem isActive={location.pathname === "/network"}>
+          <Link as={RouterLink} to="/network" color={location.pathname === "/network" ? "primary" : "foreground"}>
+            Network
+          </Link>
+        </NavbarItem>
+        <NavbarItem isActive={location.pathname === "/footage"}>
+          <Link as={RouterLink} to="/footage" color={location.pathname === "/footage" ? "primary" : "foreground"}>
+            Footage
           </Link>
         </NavbarItem>
         <NavbarItem isActive={location.pathname === "/workshop-2"}>
@@ -148,9 +164,15 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/stanford" element={<Stanford />} />
+        <Route path="/network" element={<Network />} />
+        <Route path="/submit-network" element={<SubmitNetwork />} />
+        <Route path="/contacts" element={<ContactsRedirect />} />
+        <Route path="/submit-contact" element={<SubmitContactRedirect />} />
+        <Route path="/footage" element={<Footage />} />
         <Route path="/workshop-2" element={<Workshop2 />} />
         <Route path="/speaker/sam-ahmed" element={<SamAhmed />} />
         <Route path="/speaker/ryan-chiang" element={<RyanChiang />} />
+        <Route path="/supabase-test" element={<SupabaseTestPage />} />
         <Route
           path="/organizer"
           element={
